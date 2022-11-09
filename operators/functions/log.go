@@ -2,9 +2,7 @@ package functions
 
 import (
 	"math"
-)
 
-import (
 	"github.com/alfredxing/calc/operators"
 )
 

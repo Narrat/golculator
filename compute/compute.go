@@ -6,9 +6,7 @@ import (
 	"go/token"
 	"strconv"
 	"strings"
-)
 
-import (
 	"github.com/alfredxing/calc/constants"
 	"github.com/alfredxing/calc/operators"
 	"github.com/alfredxing/calc/operators/functions"

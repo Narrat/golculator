@@ -6,13 +6,8 @@ import (
 	"os"
 	"strconv"
 	"strings"
-)
 
-import (
 	"github.com/alfredxing/calc/compute"
-)
-
-import (
 	"golang.org/x/crypto/ssh/terminal"
 )
 
