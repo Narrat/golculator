@@ -13,6 +13,7 @@ import (
 
 // Stores the state of the terminal before making it raw
 var regularState *term.State
+var fd_term int
 
 func main() {
 	if len(os.Args) > 1 {
@@ -26,13 +27,18 @@ func main() {
 	}
 
 	var err error
-	regularState, err = term.MakeRaw(0)
+	fd_term = int(os.Stdin.Fd())
+	regularState, err = term.MakeRaw(fd_term)
 	if err != nil {
 		panic(err)
 	}
-	defer term.Restore(0, regularState)
+	defer term.Restore(fd_term, regularState)
 
-	terminal := term.NewTerminal(os.Stdin, "> ")
+	screen := struct {
+		io.Reader
+		io.Writer
+	}{os.Stdin, os.Stdout}
+	terminal := term.NewTerminal(screen, "> ")
 	terminal.AutoCompleteCallback = handleKey
 	for {
 		text, err := terminal.ReadLine()
@@ -67,7 +73,7 @@ func handleKey(line string, pos int, key rune) (newLine string, newPos int, ok b
 }
 
 func exit() {
-	term.Restore(0, regularState)
+	term.Restore(fd_term, regularState)
 	fmt.Println()
 	os.Exit(0)
 }
