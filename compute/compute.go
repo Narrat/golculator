@@ -7,9 +7,9 @@ import (
 	"strconv"
 	"strings"
 
-	"github.com/alfredxing/calc/constants"
-	"github.com/alfredxing/calc/operators"
-	"github.com/alfredxing/calc/operators/functions"
+	"golculator/constants"
+	"golculator/operators"
+	"golculator/operators/functions"
 )
 
 var resHistory = []float64{}

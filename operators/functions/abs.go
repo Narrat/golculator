@@ -3,7 +3,7 @@ package functions
 import (
 	"math"
 
-	"github.com/alfredxing/calc/operators"
+	"golculator/operators"
 )
 
 var (

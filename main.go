@@ -7,7 +7,8 @@ import (
 	"strconv"
 	"strings"
 
-	"github.com/alfredxing/calc/compute"
+	"golculator/compute"
+
 	"golang.org/x/term"
 )
 
