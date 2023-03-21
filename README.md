@@ -1,20 +1,24 @@
-## calc
+## golculator
 
 [![GoDoc](https://godoc.org/github.com/alfredxing/calc?status.svg)](https://godoc.org/github.com/alfredxing/calc) [![Build Status](https://travis-ci.org/alfredxing/calc.svg?branch=master)](https://travis-ci.org/alfredxing/calc)
 
-A simple, fast, and intuitive command-line calculator written in Go.
+A simple, fast, and intuitive command-line calculator written in Go.  
+Fork of [calc by alfredxing](https://github.com/alfredxing/calc).
+Reason for the fork, because the original repo is a puplic archive and the name was to conflicting.
 
 ### Install
-Install calc as you would any other Go program:
+The original can be installed as any other Go program (with Go 1.17+):
 ```
-go get github.com/alfredxing/calc
+go install github.com/alfredxing/calc@latest
 ```
+In the future the same may work for golculator, if I decide to add the hostname to the `go.mod` .   
+Instead you could clone this repo and and run either `go build` or `go install` in the source directory.
 
 ### Usage
-You can use calc in two ways: shell mode and command.
+You can use golculator in two ways: shell mode and command.
 
 #### Shell mode
-This is probably the mode you'll want to use. It's like the `python` shell or `irb`. The shell mode uses the `terminal` package provided by [`golang.org/x/crypto/ssh/terminal`](https://godoc.org/golang.org/x/crypto/ssh/terminal), which means it supports many of the shell features you know and love (like history, pasting, and the `exit` command).
+This is probably the mode you'll want to use. It's like the `python` shell or `irb`. The shell mode uses the `term` package provided by [`golang.org/x/term`](https://godoc.org/golang.org/x/term), which means it supports many of the shell features you know and love (like history, pasting, and the `exit` command).
 ```shell
 > 1+1
 2
@@ -31,15 +35,15 @@ NaN
 ```
 
 #### Command
-You can also use calc to evaluate an expression with just a single command (i.e. without opening the shell). To do this, just use `calc [expression]`:
+You can also use golculator to evaluate an expression with just a single command (i.e. without opening the shell). To do this, just use `golculator [expression]`:
 ```shell
-bash$ calc 1+1
+bash$ golculator 1+1
 2
 bash$
 ```
 
 ### Supported functions, operators, and constants
-calc supports all the standard stuff, and I'm definitely adding more later (also feel free to fork and add your own!)
+golculator supports all the standard stuff, and I'm definitely adding more later (also feel free to fork and add your own!)
 
 ##### Operators
 `+`, `-`, `*`, `/`, `^`, `%`
@@ -67,4 +71,4 @@ Previous results can be accessed with the `@` symbol. A single `@` returns the r
 - `bc`
   - Limited number of built-in functions; these have shortened (not too intuitive) names as well.
 
-The alternatives above are all great, and have their own advantages over calc. I highly recommend looking into these if you don't like how calc works.
+The alternatives above are all great, and have their own advantages over calc/golculator. I highly recommend looking into these if you don't like how calc/golculator works.
