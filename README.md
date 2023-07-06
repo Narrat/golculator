@@ -18,7 +18,10 @@ Instead you could clone this repo and and run either `go build` or `go install` 
 You can use golculator in two ways: shell mode and command.
 
 #### Shell mode
-This is probably the mode you'll want to use. It's like the `python` shell or `irb`. The shell mode uses the `term` package provided by [`golang.org/x/term`](https://godoc.org/golang.org/x/term), which means it supports many of the shell features you know and love (like history, pasting, and the `exit` command).
+This is probably the mode you'll want to use. It's like the `python` shell or `irb`.  
+The shell mode uses the combination of [`containerd/console`](https://pkg.go.dev/github.com/containerd/console) and [`term`](https://pkg.go.dev/golang.org/x/term).
+Whereas `term` provides the new shell and support for some console features (like history, pasting, and the `exit` command). But out of the box it only works good enough on `unix`/`linux`-based consoles. For a better cross-platform support is some more work necessary.  
+This is were `containderd/console` comes into play as it allows to recognize the features of the current console and sets them active. Greatly enhancing the featureset on `Windows`.
 ```shell
 > 1+1
 2

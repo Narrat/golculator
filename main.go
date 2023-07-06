@@ -9,12 +9,12 @@ import (
 
 	"golculator/compute"
 
+	"github.com/containerd/console"
 	"golang.org/x/term"
 )
 
 // Stores the state of the terminal before making it raw
-var regularState *term.State
-var fd_term int
+var regularState console.Console
 
 func main() {
 	if len(os.Args) > 1 {
@@ -27,25 +27,20 @@ func main() {
 		return
 	}
 
-	var err error
-	fd_term = int(os.Stdin.Fd())
-	regularState, err = term.MakeRaw(fd_term)
-	if err != nil {
+	// Get capabilities of current console
+	regularState = console.Current()
+
+	if err := regularState.SetRaw(); err != nil {
 		panic(err)
 	}
-	defer term.Restore(fd_term, regularState)
 
-	screen := struct {
-		io.Reader
-		io.Writer
-	}{os.Stdin, os.Stdout}
-	terminal := term.NewTerminal(screen, "> ")
+	terminal := term.NewTerminal(regularState, "> ")
 	terminal.AutoCompleteCallback = handleKey
 	for {
 		text, err := terminal.ReadLine()
 		if err != nil {
 			if err == io.EOF {
-				// Quit without error on Ctrl^D
+				// Quit without error on Ctrl^D on empty line or Ctrl^C
 				exit()
 			}
 			panic(err)
@@ -53,7 +48,8 @@ func main() {
 
 		text = strings.Replace(text, " ", "", -1)
 		if text == "exit" || text == "quit" {
-			break
+			terminal.Write([]byte(fmt.Sprintf("Quitting")))
+			exit()
 		}
 
 		res, err := compute.Evaluate(text)
@@ -74,7 +70,7 @@ func handleKey(line string, pos int, key rune) (newLine string, newPos int, ok b
 }
 
 func exit() {
-	term.Restore(fd_term, regularState)
+	regularState.Reset()
 	fmt.Println()
 	os.Exit(0)
 }
