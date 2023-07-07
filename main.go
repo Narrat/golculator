@@ -35,7 +35,7 @@ func main() {
 	}
 
 	terminal := term.NewTerminal(regularState, "> ")
-	terminal.AutoCompleteCallback = handleKey
+	//terminal.AutoCompleteCallback = handleKey
 	for {
 		text, err := terminal.ReadLine()
 		if err != nil {
@@ -62,6 +62,7 @@ func main() {
 }
 
 func handleKey(line string, pos int, key rune) (newLine string, newPos int, ok bool) {
+	// Is without function; io.EOF did catch ^D & ^C
 	if key == '\x03' {
 		// Quit without error on Ctrl^C
 		exit()
