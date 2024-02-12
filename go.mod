@@ -3,7 +3,7 @@ module golculator
 go 1.19
 
 require (
-	github.com/containerd/console v1.0.3
+	github.com/containerd/console v1.0.4
 	golang.org/x/term v0.16.0
 )
 
