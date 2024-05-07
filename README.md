@@ -27,7 +27,7 @@ This is were `containderd/console` comes into play as it allows to recognize the
 2
 > 3(5/(3-4))
 -15
-> 3pi^2
+> 3*pi^2
 29.608813203268074
 > @+1
 30.608813203268074
