@@ -1,5 +1,5 @@
 all:
-	go build -o calc
+	go build -o golc
 test:
 	go test -v ./...
 benchmark:
