@@ -7,7 +7,7 @@ import (
 	"strconv"
 	"strings"
 
-	"golculator/compute"
+	"golculator/internal/compute"
 
 	"github.com/containerd/console"
 	"golang.org/x/term"

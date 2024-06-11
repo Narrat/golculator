@@ -7,9 +7,9 @@ import (
 	"strconv"
 	"strings"
 
-	"golculator/constants"
-	"golculator/operators"
-	"golculator/operators/functions"
+	"golculator/internal/constants"
+	"golculator/internal/operators"
+	"golculator/internal/operators/functions"
 )
 
 var resHistory = []float64{}

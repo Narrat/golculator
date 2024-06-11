@@ -3,21 +3,21 @@ package functions
 import (
 	"math"
 
-	"golculator/operators"
+	"golculator/internal/operators"
 )
 
 var (
-	sqrt = &operators.Operator{
-		Name:          "sqrt",
+	abs = &operators.Operator{
+		Name:          "abs",
 		Precedence:    0,
 		Associativity: operators.L,
 		Args:          1,
 		Operation: func(args []float64) float64 {
-			return math.Sqrt(args[0])
+			return math.Abs(args[0])
 		},
 	}
 )
 
 func init() {
-	Register(sqrt)
+	Register(abs)
 }

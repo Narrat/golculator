@@ -1,7 +1,7 @@
 package functions
 
 import (
-	"golculator/operators"
+	"golculator/internal/operators"
 )
 
 var Names = map[string]bool{}
