@@ -1,12 +1,10 @@
 module golculator
 
-go 1.24.0
-
-toolchain go1.24.1
+go 1.25.0
 
 require (
 	github.com/containerd/console v1.0.5
-	golang.org/x/term v0.40.0
+	golang.org/x/term v0.41.0
 )
 
-require golang.org/x/sys v0.41.0 // indirect
+require golang.org/x/sys v0.42.0 // indirect
